@@ -1,0 +1,11 @@
+# Fotos subidas durante las pruebas (no se suben al repositorio)
+uploaded_files/*
+# ...pero sí se conservan estos dos archivos
+!uploaded_files/.gitkeep
+!uploaded_files/.htaccess
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,4 @@
+# Bloquea cualquier acceso directo desde el navegador (Apache 2.4 / WAMP)
+Require all denied
+Options -Indexes
+php_flag engine off

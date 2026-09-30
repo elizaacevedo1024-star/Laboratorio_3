@@ -1,0 +1,153 @@
+/* =====================================================
+   estilos.css - Tema: Morado, Dorado Metálico y Plateado
+   Se carga DESPUÉS de Bootstrap para sobrescribir sus estilos
+   ===================================================== */
+
+:root {
+    /* Morados */
+    --morado-oscuro: #2e0f4f;
+    --morado: #4b1e7a;
+    --morado-claro: #6f3fb0;
+
+    /* Dorado metálico */
+    --dorado: #d4af37;
+    --dorado-oscuro: #9c7a1a;
+    --dorado-metal: linear-gradient(135deg, #8a6a12 0%, #d4af37 22%, #fff1a8 45%, #d4af37 62%, #a5821c 82%, #f0d060 100%);
+
+    /* Plateado metálico */
+    --plata: #c0c0c8;
+    --plata-oscuro: #8e8e98;
+    --plata-metal: linear-gradient(135deg, #9a9aa4 0%, #e6e6ec 25%, #ffffff 45%, #c4c4cc 65%, #8f8f99 85%, #dcdce2 100%);
+
+    /* Bootstrap: el color "primary" pasa a ser morado */
+    --bs-primary: #4b1e7a;
+    --bs-primary-rgb: 75, 30, 122;
+    --bs-link-color: #4b1e7a;
+    --bs-link-hover-color: #9c7a1a;
+}
+
+/* ---------- Fondo general ---------- */
+body {
+    background: linear-gradient(160deg, #f4f2f8 0%, #e3e1ea 100%);
+    background-attachment: fixed;
+    color: #2b2b33;
+}
+
+/* ---------- Navbar (morado + dorado) ---------- */
+.navbar-morado {
+    background: linear-gradient(90deg, var(--morado-oscuro), var(--morado));
+    border-bottom: 3px solid var(--dorado);
+}
+.navbar-morado .navbar-brand {
+    background: var(--dorado-metal);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--dorado);              /* respaldo si el navegador no soporta clip */
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* ---------- Breadcrumb (plateado) ---------- */
+.breadcrumb-plata {
+    background: var(--plata-metal);
+    border-bottom: 1px solid var(--plata-oscuro);
+}
+.breadcrumb-plata .breadcrumb-item a {
+    text-decoration: none;
+    color: var(--morado);
+    font-weight: 600;
+}
+.breadcrumb-plata .breadcrumb-item a:hover { color: var(--dorado-oscuro); }
+.breadcrumb-plata .breadcrumb-item.active { color: var(--morado-oscuro); }
+.breadcrumb-plata .breadcrumb-item + .breadcrumb-item::before { color: var(--morado); }
+
+/* ---------- Título de sección ---------- */
+.titulo-seccion {
+    color: var(--morado);
+    font-weight: 700;
+    text-shadow: 0 1px 0 #fff;
+}
+
+/* ---------- Tarjeta / formulario ---------- */
+.card-plata {
+    border: 2px solid var(--plata-oscuro);
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(46, 15, 79, 0.18);
+    overflow: hidden;
+}
+.card-plata .card-header,
+.card-plata .card-footer {
+    background: var(--plata-metal);
+    border-color: var(--plata-oscuro);
+}
+.encabezado-morado {
+    background: linear-gradient(90deg, var(--morado-oscuro), var(--morado)) !important;
+    color: var(--dorado) !important;
+    font-weight: 600;
+}
+
+.form-label { color: var(--morado-oscuro); }
+
+.form-control:focus {
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.35);
+}
+
+/* ---------- Botón dorado metálico ---------- */
+.btn-dorado {
+    background: var(--dorado-metal);
+    background-size: 200% 200%;
+    color: var(--morado-oscuro);
+    font-weight: 700;
+    border: 1px solid var(--dorado-oscuro);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    transition: background-position 0.4s ease, transform 0.1s ease, box-shadow 0.2s;
+}
+.btn-dorado:hover,
+.btn-dorado:focus {
+    background-position: 100% 100%;
+    color: var(--morado-oscuro);
+    box-shadow: 0 4px 14px rgba(156, 122, 26, 0.5);
+}
+.btn-dorado:active { transform: scale(0.98); }
+
+/* ---------- Botón plateado ---------- */
+.btn-plata {
+    background: var(--plata-metal);
+    color: var(--morado-oscuro);
+    font-weight: 600;
+    border: 1px solid var(--plata-oscuro);
+}
+.btn-plata:hover { color: var(--morado); box-shadow: 0 3px 10px rgba(46, 15, 79, 0.25); }
+
+/* Opciones Hombre / Mujer al ser seleccionadas */
+.btn-check:checked + .btn-plata {
+    background: linear-gradient(90deg, var(--morado-oscuro), var(--morado));
+    color: var(--dorado);
+    border-color: var(--dorado);
+}
+.btn-check:focus-visible + .btn-plata {
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.4);
+}
+
+/* ---------- Footer (morado + dorado + plata) ---------- */
+.footer-morado {
+    background: linear-gradient(90deg, var(--morado-oscuro), var(--morado));
+    border-top: 3px solid var(--dorado);
+    color: var(--plata);
+}
+.footer-morado .eslogan {
+    background: var(--dorado-metal);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--dorado);
+    font-weight: 600;
+}
+.footer-morado a { color: var(--dorado); text-decoration: none; }
+.footer-morado a:hover { color: #fff1a8; text-decoration: underline; }
+.footer-morado .enlace-plata { color: var(--plata); }
+.footer-morado .enlace-plata:hover { color: #ffffff; }
+.footer-morado .copyright { color: var(--plata-oscuro); }
