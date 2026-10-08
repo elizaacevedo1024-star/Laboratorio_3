@@ -8,6 +8,27 @@ Aplicación web en **PHP + Bootstrap 5.3.8** para registrar aspirantes con valid
 
 ---
 
+## 🌐 Tecnologías y versiones
+
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![APACHE](https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=Apache&logoColor=white)
+![WAMPSERVER](https://img.shields.io/badge/WampServer-00529B?style=for-the-badge)
+
+| Tecnología | Versión | Uso |
+| --- | --- | --- |
+| PHP | 7.4 o superior (recomendado 8.x). _Escribe aquí la tuya_ | Lenguaje del backend |
+| Bootstrap | 5.3.8 (CDN) | Maquetación y componentes |
+| Bootstrap Icons | _(escribe la versión que cargas por CDN)_ | Iconos |
+| Apache | _(escribe tu versión, ej. 2.4.x)_ | Servidor web local |
+| WampServer | _(escribe tu versión, ej. 3.x)_ | Entorno local |
+| Visual Studio Code | _(escribe tu versión)_ | Editor de código |
+| HTML / CSS | 5 / 3 | Estructura y estilos (`css/estilos.css`) |
+
+---
+
 ## ✨ Características
 
 - Maquetación con **Bootstrap 5.3.8** y etiquetas semánticas: `<header>`, `<main>`, `<section>`, `<footer>`.
@@ -25,12 +46,15 @@ Aplicación web en **PHP + Bootstrap 5.3.8** para registrar aspirantes con valid
 - Meta etiquetas: `viewport`, `author`, `description`, `robots` y `theme-color`.
 - Footer con año dinámico (`date('Y')`), contacto, enlaces rápidos y eslogan institucional.
 
-## 📁 Estructura del proyecto
+---
+
+## 📁 Detalles del laboratorio
 
 ```
 Laboratorio_3/
 ├── css/
 │   └── estilos.css          # Tema morado, dorado y plateado
+├── img/                     # Imágenes del proyecto y capturas del README
 ├── includes/
 │   ├── header.php           # Metadatos, navbar y breadcrumb dinámico
 │   ├── footer.php           # Footer con enlaces y año dinámico
@@ -43,13 +67,72 @@ Laboratorio_3/
 └── README.md
 ```
 
+| Archivo | Función |
+| --- | --- |
+| `index.php` | Carga el header, el formulario y el footer mediante `include` |
+| `procesar.php` | Recibe el POST, valida, guarda la foto y muestra el resultado |
+| `includes/formulario.php` | Formulario de registro con sus controles |
+| `includes/header.php` / `footer.php` | Navegación, breadcrumb y pie de página reutilizables |
+| `css/estilos.css` | Estilos personalizados sobre Bootstrap |
+| `uploaded_files/` | Carpeta de fotografías, protegida con `.htaccess` |
+
+---
+
+## 🎛️ Controles utilizados
+
+El formulario envía los datos por `POST` a `procesar.php` con `enctype="multipart/form-data"`.
+
+| Campo | Control | Atributos principales |
+| --- | --- | --- |
+| Nombre | `<input type="text">` | `name="nombre"`, `required`, `maxlength="60"` |
+| Apellido | `<input type="text">` | `name="apellido"`, `required`, `maxlength="60"` |
+| Identificación | `<input type="text">` | `name="identificacion"`, `required`, `maxlength="20"` |
+| Fecha de nacimiento | `<input type="date">` | `name="fecha_nacimiento"`, `required`, `max` calculado con PHP (18 años atrás) |
+| Sexo | `<input type="radio">` (Hombre / Mujer) con estilo de botón | `name="sexo"`, clase `btn-check` de Bootstrap |
+| Fotografía | `<input type="file">` | `name="foto"`, `required`, `accept=".png,.jpg,.jpeg,.gif,.webp"` |
+| Enviar | `<button type="submit">` | "Registrar Aspirante", clase `btn-dorado` |
+
+---
+
+## 🖼️ Evidencia de ejecución
+
+### ➕ Insertar registros
+
+En este laboratorio no hay base de datos: el registro del aspirante se valida y se muestra en pantalla, y la fotografía se guarda en `uploaded_files/`.
+
+**1. Formulario de registro** (`index.php`)
+
+![Formulario de registro de aspirantes](img/formulario_registro.png)
+
+**2. Aspirante registrado correctamente** (`procesar.php`)
+
+Se muestran los datos normalizados, la edad calculada y la fotografía:
+
+![Resultado del registro](img/resultado_registro.png)
+
+**3. Fotografía guardada con nombre aleatorio**
+
+La imagen se guarda en `uploaded_files/` con un nombre generado al azar, no con el nombre original:
+
+![Fotografía guardada en uploaded_files](img/foto_guardada_nombre_aleatorio.jpg)
+
+### ✏️ Modificar
+
+No aplica en este laboratorio: no hay base de datos, por lo que los registros no se almacenan ni se pueden modificar.
+
+### 🗑️ Eliminar
+
+No aplica en este laboratorio: no hay base de datos, por lo que no hay registros que eliminar.
+
+---
+
 ## ⚙️ Requisitos
 
 - PHP 7.4 o superior (recomendado 8.x) con las extensiones `fileinfo` y `mbstring` activas.
 - Servidor Apache con `AllowOverride All` (por ejemplo, **WAMP**, XAMPP o Laragon).
 - Conexión a internet para cargar Bootstrap y Bootstrap Icons desde CDN.
 
-## 🚀 Instalación y uso
+## 🚀 Procesos de instalación
 
 1. Clona el repositorio dentro de la carpeta pública de tu servidor:
 
@@ -68,12 +151,27 @@ La carpeta `uploaded_files/` contiene un `.htaccess` con `Require all denied`, p
 
 Para verificarlo, intenta abrir `http://localhost/Laboratorio_3/uploaded_files/` en el navegador. Debe mostrar **403 Forbidden**.
 
+---
 
-## 👤 Autor
+## 👤 Autora y fecha
 
 **Elizabeth Acevedo Lopez**
-Estudiante de Ingeniería de Sistemas Computacionales — UTP
-GitHub: [elizaacevedo1024-star](https://github.com/elizaacevedo1024-star)
+Estudiante de licenciatura en Ciberseguridad
+Facultad de Ingeniería de Sistemas Computacionales — Universidad Tecnológica de Panamá
+
+- 📧 **Email:** elizabeth.acevedo@utp.ac.pa
+- 🌐 **GitHub:** [elizaacevedo1024-star](https://github.com/elizaacevedo1024-star)
+- 📅 **Fecha:** 08-10-2026
+
+---
+
+## 📚 Referencias
+
+- Manual de PHP, subida de archivos: https://www.php.net/manual/es/features.file-upload.php
+- Manual de PHP, `include`: https://www.php.net/manual/es/function.include.php
+- Bootstrap 5.3, documentación: https://getbootstrap.com/docs/5.3/
+- MDN, `<input type="file">`: https://developer.mozilla.org/es/docs/Web/HTML/Element/input/file
+- OWASP, carga segura de archivos: https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html
 
 ---
 
